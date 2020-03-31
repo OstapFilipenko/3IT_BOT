@@ -3,7 +3,6 @@ import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -44,12 +43,20 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if(message != null && message.hasText()){
             switch (message.getText()){
-                case "Hallo":
-                    sendMsg(message, "Hallo, bist du einer von uns?");
+                case "/Schueler":
+                    sendMsg(message, "Schueler");
                     break;
-                case "Wie geht es dir?":
-                    sendMsg(message, "Mir geht es voll gut)");
+                case "/Lehrer":
+                    sendMsg(message, "Lehrer");
                     break;
+                case "Schueler":
+                    sendMsg(message, "Schueler");
+                    break;
+                case "Lehrer":
+                    sendMsg(message, "Lehrer");
+                    break;
+                case "/start":
+                    sendMsg(message, "here are all possibilies: \n /Schueler to get all Schuelers \n /Lehrer - to get all Lehrer");
             }
         }
     }
@@ -64,8 +71,8 @@ public class Bot extends TelegramLongPollingBot {
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         KeyboardRow keyboardRow = new KeyboardRow();
 
-        keyboardRow.add(new KeyboardButton("Hallo"));
-        keyboardRow.add(new KeyboardButton("Wie geht es dir?"));
+        keyboardRow.add(new KeyboardButton("Schueler"));
+        keyboardRow.add(new KeyboardButton("Lehrer"));
 
         keyboardRowList.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
