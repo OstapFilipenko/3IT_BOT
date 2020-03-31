@@ -3,9 +3,16 @@ import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
+import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboard;
+import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardButton;
+import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Bot extends TelegramLongPollingBot {
@@ -26,6 +33,7 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setReplyToMessageId(message.getMessageId());
         sendMessage.setText(text);
         try{
+            setButtons(sendMessage);
             sendMessage(sendMessage);
         }catch (TelegramApiException e){
             e.printStackTrace();
@@ -36,14 +44,31 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if(message != null && message.hasText()){
             switch (message.getText()){
-                case "/Hallo":
+                case "Hallo":
                     sendMsg(message, "Hallo, bist du einer von uns?");
                     break;
-                case "/Wie geht es dir?":
+                case "Wie geht es dir?":
                     sendMsg(message, "Mir geht es voll gut)");
                     break;
             }
         }
+    }
+
+    public void setButtons(SendMessage sendMessage){
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        replyKeyboardMarkup.setSelective(true);
+        replyKeyboardMarkup.setResizeKeyboard(true);
+        replyKeyboardMarkup.setOneTimeKeyboard(false);
+
+        List<KeyboardRow> keyboardRowList = new ArrayList<>();
+        KeyboardRow keyboardRow = new KeyboardRow();
+
+        keyboardRow.add(new KeyboardButton("Hallo"));
+        keyboardRow.add(new KeyboardButton("Wie geht es dir?"));
+
+        keyboardRowList.add(keyboardRow);
+        replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 
     public String getBotUsername() {
