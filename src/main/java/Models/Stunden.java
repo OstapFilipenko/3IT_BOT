@@ -2,9 +2,9 @@ package Models;
 
 public class Stunden {
     private String stundenName;
-    private Lehrer lehrer;
+    private String lehrer;
 
-    public Stunden(String stundenName, Lehrer lehrer) {
+    public Stunden(String stundenName, String lehrer) {
         this.stundenName = stundenName;
         this.lehrer = lehrer;
     }
@@ -17,11 +17,11 @@ public class Stunden {
         this.stundenName = stundenName;
     }
 
-    public Lehrer getLehrer() {
+    public String getLehrer() {
         return lehrer;
     }
 
-    public void setLehrer(Lehrer lehrer) {
+    public void setLehrer(String lehrer) {
         this.lehrer = lehrer;
     }
 }

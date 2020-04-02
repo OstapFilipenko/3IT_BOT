@@ -1,3 +1,6 @@
+import Models.Lehrer;
+import Models.Stunden;
+import org.json.simple.parser.ParseException;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -10,11 +13,14 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Bot extends TelegramLongPollingBot {
+    List<Stunden> stunden = new ArrayList<>();
+
     public static void main(String[] args){
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
@@ -39,24 +45,37 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
+    public String listAllStunden(List<Stunden> ls){
+        String result = "Alle Stunden: \n\n";
+        for (Stunden st: ls) {
+            result += "StundenName: " + st.getStundenName() + "\nLehrer: " + st.getLehrer() + "\n\n";
+        }
+        return result;
+    }
+
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if(message != null && message.hasText()){
             switch (message.getText()){
                 case "/Schueler":
-                    sendMsg(message, "Schueler");
-                    break;
-                case "/Lehrer":
-                    sendMsg(message, "Lehrer");
-                    break;
                 case "Schueler":
                     sendMsg(message, "Schueler");
                     break;
+                case "/Lehrer":
                 case "Lehrer":
                     sendMsg(message, "Lehrer");
                     break;
+                case "/Stunden":
+                case "Stunden":
+                    try {
+                        stunden = allStunden.getAllStunden();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    sendMsg(message, listAllStunden(stunden));
+                    break;
                 case "/start":
-                    sendMsg(message, "here are all possibilies: \n /Schueler to get all Schuelers \n /Lehrer - to get all Lehrer");
+                    sendMsg(message, "here are all possibilies: \n /Schueler to get all Schuelers \n /Lehrer - to get all Lehrer \n /Stunden - to get all Stunden");
             }
         }
     }
@@ -73,6 +92,7 @@ public class Bot extends TelegramLongPollingBot {
 
         keyboardRow.add(new KeyboardButton("Schueler"));
         keyboardRow.add(new KeyboardButton("Lehrer"));
+        keyboardRow.add(new KeyboardButton("Stunden"));
 
         keyboardRowList.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
