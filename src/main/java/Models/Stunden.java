@@ -24,4 +24,10 @@ public class Stunden {
     public void setLehrer(String lehrer) {
         this.lehrer = lehrer;
     }
+
+
+    @Override
+    public String toString() {
+       return "StundenName: " + this.stundenName + "\nLehrer: " + this.lehrer + "\n\n";
+    }
 }

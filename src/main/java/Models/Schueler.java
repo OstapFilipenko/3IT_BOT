@@ -41,4 +41,9 @@ public class Schueler {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "Firstname: " + this.firstName + "\nLastname: " + this.lastName + "\nEmail: " + this.email + "\n\n";
+    }
 }

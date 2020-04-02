@@ -13,8 +13,6 @@ public class Lehrer {
     private List<String> stundenList = new ArrayList<>();
     private String email;
 
-    // Have to storage an img, but dont know how
-
 
     public Lehrer(String firstName, String lastName, List<String> stundenList, String email, String kuerzel) {
         this.firstName = firstName;
@@ -64,5 +62,18 @@ public class Lehrer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        String stunden = "";
+        for (String s: this.stundenList) {
+            stunden += "\n    " + s;
+        }
+        result += "Firstname: " + this.firstName + "\nLastname: " + this.lastName + "\nKürzel: "
+                + this.kuerzel + "\nStunden: " + stunden + "\nEmail: " + this.email + "\n\n" ;
+
+        return result;
     }
 }

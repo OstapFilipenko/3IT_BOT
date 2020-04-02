@@ -50,36 +50,6 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    public String listAllStunden(List<Stunden> ls){
-        String result = "Alle Stunden: \n\n";
-        for (Stunden st: ls) {
-            result += "StundenName: " + st.getStundenName() + "\nLehrer: " + st.getLehrer() + "\n\n";
-        }
-        return result;
-    }
-
-    public String listAllSchueler(List<Schueler> ls){
-        String result = "Alle Schueler: \n\n";
-        for (Schueler sc: ls) {
-            result += "Firstname: " + sc.getFirstName() + "\nLastname: " + sc.getLastName() + "\nEmail: " + sc.getEmail() + "\n\n";
-        }
-        return result;
-    }
-
-    public String listAllLehrer(List<Lehrer> ls){
-        String result = "Alle Lehrer: \n\n";
-        for (Lehrer sc: ls) {
-            String stunden = "";
-            for (String s: sc.getStundenList()) {
-                stunden += "\n    " + s;
-            }
-            result += "Firstname: " + sc.getFirstName() + "\nLastname: " + sc.getLastName() + "\nKürzel: "
-                    + sc.getKuerzel() + "\nStunden: " + stunden + "\nEmail: " + sc.getEmail() + "\n\n" ;
-        }
-        return result;
-    }
-
-
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if(message != null && message.hasText()){
@@ -91,7 +61,11 @@ public class Bot extends TelegramLongPollingBot {
                     }catch (IOException e){
                         e.printStackTrace();
                     }
-                    sendMsg(message, listAllSchueler(schueler));
+                    String schuelerStr = "Alle Schueler: \n\n";
+                    for (Schueler sc: schueler) {
+                        schuelerStr += sc.toString();
+                    }
+                    sendMsg(message, schuelerStr);
                     break;
                 case "/Lehrer":
                 case "Lehrer":
@@ -100,7 +74,11 @@ public class Bot extends TelegramLongPollingBot {
                     }catch (IOException e){
                         e.printStackTrace();
                     }
-                    sendMsg(message, listAllLehrer(lehrer));
+                    String lehrerStr = "Alle Lehrer: \n\n";
+                    for (Lehrer l: lehrer) {
+                        lehrerStr += l.toString();
+                    }
+                    sendMsg(message, lehrerStr);
                     break;
                 case "/Stunden":
                 case "Stunden":
@@ -109,7 +87,11 @@ public class Bot extends TelegramLongPollingBot {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    sendMsg(message, listAllStunden(stunden));
+                    String stundenStr = "Alle Stunden: \n\n";
+                    for (Stunden s: stunden) {
+                        stundenStr += s.toString();
+                    }
+                    sendMsg(message, stundenStr);
                     break;
                 case "/start":
                     sendMsg(message, "here are all possibilies: \n /Schueler to get all Schuelers \n /Lehrer - to get all Lehrer \n /Stunden - to get all Stunden");
