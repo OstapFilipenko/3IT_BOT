@@ -1,6 +1,9 @@
 import Models.Lehrer;
+import Models.Schueler;
 import Models.Stunden;
-import org.json.simple.parser.ParseException;
+import gettingDatas.allStunden;
+import gettingDatas.allSchueler;
+import gettingDatas.allLehrer;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -20,6 +23,8 @@ import java.util.List;
 
 public class Bot extends TelegramLongPollingBot {
     List<Stunden> stunden = new ArrayList<>();
+    List<Schueler> schueler = new ArrayList<>();
+    List<Lehrer> lehrer = new ArrayList<>();
 
     public static void main(String[] args){
         ApiContextInitializer.init();
@@ -53,13 +58,27 @@ public class Bot extends TelegramLongPollingBot {
         return result;
     }
 
+    public String listAllSchueler(List<Schueler> ls){
+        String result = "Alle Schueler: \n\n";
+        for (Schueler sc: ls) {
+            result += "Firstname: " + sc.getFirstName() + "\nLastname: " + sc.getLastName() + "\nEmail: " + sc.getEmail() + "\n\n";
+        }
+        return result;
+    }
+
+
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if(message != null && message.hasText()){
             switch (message.getText()){
                 case "/Schueler":
                 case "Schueler":
-                    sendMsg(message, "Schueler");
+                    try{
+                        schueler = allSchueler.getAllSchueler();
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+                    sendMsg(message, listAllSchueler(schueler));
                     break;
                 case "/Lehrer":
                 case "Lehrer":
