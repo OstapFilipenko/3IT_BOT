@@ -66,6 +66,19 @@ public class Bot extends TelegramLongPollingBot {
         return result;
     }
 
+    public String listAllLehrer(List<Lehrer> ls){
+        String result = "Alle Lehrer: \n\n";
+        for (Lehrer sc: ls) {
+            String stunden = "";
+            for (String s: sc.getStundenList()) {
+                stunden += "\n    " + s;
+            }
+            result += "Firstname: " + sc.getFirstName() + "\nLastname: " + sc.getLastName() + "\nKürzel: "
+                    + sc.getKuerzel() + "\nStunden: " + stunden + "\nEmail: " + sc.getEmail() + "\n\n" ;
+        }
+        return result;
+    }
+
 
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
@@ -82,7 +95,12 @@ public class Bot extends TelegramLongPollingBot {
                     break;
                 case "/Lehrer":
                 case "Lehrer":
-                    sendMsg(message, "Lehrer");
+                    try{
+                        lehrer = allLehrer.getAllLehrer();
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+                    sendMsg(message, listAllLehrer(lehrer));
                     break;
                 case "/Stunden":
                 case "Stunden":

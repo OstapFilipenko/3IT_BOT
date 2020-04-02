@@ -10,13 +10,13 @@ public class Lehrer {
     private String kuerzel;
 
 
-    private List<Stunden> stundenList = new ArrayList<>();
+    private List<String> stundenList = new ArrayList<>();
     private String email;
 
     // Have to storage an img, but dont know how
 
 
-    public Lehrer(String firstName, String lastName, List<Stunden> stundenList, String email, String kuerzel) {
+    public Lehrer(String firstName, String lastName, List<String> stundenList, String email, String kuerzel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.stundenList = stundenList;
@@ -50,11 +50,11 @@ public class Lehrer {
     }
 
 
-    public List<Stunden> getStundenList() {
+    public List<String> getStundenList() {
         return stundenList;
     }
 
-    public void setStundenList(List<Stunden> stundenList) {
+    public void setStundenList(List<String> stundenList) {
         this.stundenList = stundenList;
     }
 
