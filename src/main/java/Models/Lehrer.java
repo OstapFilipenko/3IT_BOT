@@ -7,27 +7,31 @@ import java.util.List;
 public class Lehrer {
     private String firstName;
     private String lastName;
+    private String kuerzel;
 
-    // I will get date from the api in this format as String: "2003-03-29" and then i have to convert it in localdate
-    private LocalDate birthDate;
+
     private List<Stunden> stundenList = new ArrayList<>();
     private String email;
 
     // Have to storage an img, but dont know how
 
 
-    public Lehrer(String firstName, String lastName, String birthDate, List<Stunden> stundenList, String email) {
+    public Lehrer(String firstName, String lastName, List<Stunden> stundenList, String email, String kuerzel) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = convertStringToDate(birthDate);
         this.stundenList = stundenList;
         this.email = email;
+        this.kuerzel = kuerzel;
     }
 
-
-    public LocalDate convertStringToDate(String date){
-        return LocalDate.parse(date);
+    public String getKuerzel() {
+        return kuerzel;
     }
+
+    public void setKuerzel(String kuerzel) {
+        this.kuerzel = kuerzel;
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -45,13 +49,6 @@ public class Lehrer {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
 
     public List<Stunden> getStundenList() {
         return stundenList;

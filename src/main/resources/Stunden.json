@@ -1,0 +1,94 @@
+[
+  {
+    "stundenName" : "DBMM",
+    "lehrer" : "KMA"
+  },
+  {
+    "stundenName" : "POS-KMA",
+    "lehrer" : "KMA"
+  },
+  {
+    "stundenName" : "POS+",
+    "lehrer" : "KMA"
+  },
+  {
+    "stundenName" : "NTVS",
+    "lehrer" : "SOJ"
+  },
+  {
+    "stundenName" : "UFW",
+    "lehrer" : "AG"
+  },
+  {
+    "stundenName" : "SPL-POA",
+    "lehrer" : "POA"
+  },
+  {
+    "stundenName" : "SPL-HG",
+    "lehrer" : "HG"
+  },
+  {
+    "stundenName" : "POS-HG",
+    "lehrer" : "HG"
+  },
+  {
+    "stundenName" : "NWTU",
+    "lehrer" : "HG"
+  },
+  {
+    "stundenName" : "AM",
+    "lehrer" : "MAY"
+  },
+  {
+    "stundenName" : "BESP",
+    "lehrer" : "MAY"
+  },
+  {
+    "stundenName" : "ENG-FER",
+    "lehrer" : "FER"
+  },
+  {
+    "stundenName" : "EBIST",
+    "lehrer" : "FER"
+  },
+  {
+    "stundenName" : "ENG-GO",
+    "lehrer" : "GO"
+  },
+  {
+    "stundenName" : "GGP-SRE",
+    "lehrer" : "SRE"
+  },
+  {
+    "stundenName" : "DE",
+    "lehrer" : "SRE"
+  },
+  {
+    "stundenName" : "BET-HBX",
+    "lehrer" : "HBX"
+  },
+  {
+    "stundenName" : "INFI",
+    "lehrer" : "WB"
+  },
+  {
+    "stundenName" : "SYP",
+    "lehrer" : "LCLE"
+  },
+  {
+    "stundenName" : "POS-GUA",
+    "lehrer" : "GUA"
+  },
+  {
+    "stundenName" : "NAWI",
+    "lehrer" : "PRE"
+  },
+  {
+    "stundenName" : "GGP-SC",
+    "lehrer" : "SC"
+  },
+  {
+    "stundenName" : "BET-KEP",
+    "lehrer" : "KEP"
+  }
+]
