@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TelegramBot">
+    <output-path>$PROJECT_DIR$/out/artifacts/TelegramBot</output-path>
+    <root id="archive" name="TelegramBot.jar" />
+  </artifact>
+</component>
