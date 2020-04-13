@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/Bot-1.0-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar NTVS_3IT_BOT_jar/NTVS_3IT_BOT.jar
