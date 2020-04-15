@@ -1,6 +1,7 @@
 import Models.Lehrer;
 import Models.Schueler;
 import Models.Stunden;
+import gettingDatas.Overwriting_jsonFiles;
 import gettingDatas.allStunden;
 import gettingDatas.allSchueler;
 import gettingDatas.allLehrer;
@@ -27,6 +28,14 @@ public class Bot extends TelegramLongPollingBot {
     List<Lehrer> lehrer = new ArrayList<>();
 
     public static void main(String[] args){
+        Overwriting_jsonFiles students = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/students", "C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Schueler.json");
+        Overwriting_jsonFiles teachers = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/teachers", "C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Lehrer.json");
+        Overwriting_jsonFiles lessons = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/lessons", "C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Stunden.json");
+
+        students.start();
+        teachers.start();
+        lessons.start();
+
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try{
@@ -34,6 +43,7 @@ public class Bot extends TelegramLongPollingBot {
         }catch (TelegramApiRequestException e){
             e.printStackTrace();
         }
+
     }
 
     public void sendMsg(Message message, String text){

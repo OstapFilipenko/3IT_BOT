@@ -26,13 +26,7 @@ public class allLehrer {
         JSONArray jsonArray = new JSONArray(result);
         jsonArray.forEach(jsonObject -> {
             JSONObject lehrer = (JSONObject) jsonObject;
-            JSONArray stunden = (JSONArray) lehrer.get("stunden");
-            List<String> subjects = new ArrayList<>();
-            stunden.forEach(std->{
-                JSONObject s = (JSONObject) std;
-                subjects.add(s.get("stundenName").toString());
-            });
-            alleLehrer.add(new Lehrer(lehrer.getString("firstName"), lehrer.getString("lastName"), subjects, lehrer.get("email").toString(), lehrer.get("kuerzel").toString()));
+            alleLehrer.add(new Lehrer(lehrer.getString("firstName"), lehrer.getString("lastName"), lehrer.get("email").toString(), lehrer.get("kuerzel").toString()));
         });
         return alleLehrer;
     }

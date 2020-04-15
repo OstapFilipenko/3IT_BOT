@@ -8,9 +8,6 @@ public class Schueler {
 
     private String email;
 
-    // Have to storage an img, but dont know how
-
-
     public Schueler(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;

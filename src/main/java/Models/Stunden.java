@@ -28,6 +28,6 @@ public class Stunden {
 
     @Override
     public String toString() {
-       return "StundenName: " + this.stundenName + "\nLehrer: " + this.lehrer + "\n\n";
+       return "Stunde: " + this.stundenName + "\nLehrer: " + this.lehrer + "\n\n";
     }
 }

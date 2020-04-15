@@ -21,7 +21,7 @@ public class allStunden {
     JSONArray jsonArray = new JSONArray(result);
         jsonArray.forEach(jsonObject -> {
             JSONObject stunde = (JSONObject) jsonObject;
-            alleStunden.add(new Stunden(stunde.getString("stundenName"), stunde.getString("lehrer")));
+            alleStunden.add(new Stunden(stunde.getString("lessonName"), stunde.getString("teacher")));
         });
         return alleStunden;
     }

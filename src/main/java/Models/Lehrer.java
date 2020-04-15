@@ -1,6 +1,5 @@
 package Models;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +9,12 @@ public class Lehrer {
     private String kuerzel;
 
 
-    private List<String> stundenList = new ArrayList<>();
     private String email;
 
 
-    public Lehrer(String firstName, String lastName, List<String> stundenList, String email, String kuerzel) {
+    public Lehrer(String firstName, String lastName, String email, String kuerzel) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.stundenList = stundenList;
         this.email = email;
         this.kuerzel = kuerzel;
     }
@@ -47,15 +44,6 @@ public class Lehrer {
         this.lastName = lastName;
     }
 
-
-    public List<String> getStundenList() {
-        return stundenList;
-    }
-
-    public void setStundenList(List<String> stundenList) {
-        this.stundenList = stundenList;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -67,12 +55,9 @@ public class Lehrer {
     @Override
     public String toString() {
         String result = "";
-        String stunden = "";
-        for (String s: this.stundenList) {
-            stunden += "\n    " + s;
-        }
+
         result += "Firstname: " + this.firstName + "\nLastname: " + this.lastName + "\nKürzel: "
-                + this.kuerzel + "\nStunden: " + stunden + "\nEmail: " + this.email + "\n\n" ;
+                + this.kuerzel + "\nEmail: " + this.email + "\n\n" ;
 
         return result;
     }
