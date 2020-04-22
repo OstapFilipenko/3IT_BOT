@@ -103,6 +103,15 @@ public class Bot extends TelegramLongPollingBot {
                     }
                     sendMsg(message, stundenStr);
                     break;
+                case "\uD83D\uDD0E Schueler":
+                    sendMsg(message, "Enter the name of Schueler: ");
+                    break;
+                case "\uD83D\uDD0E Lehrer":
+                    sendMsg(message, "Enter the name of Lehrer: ");
+                    break;
+                case "\uD83D\uDD0E Stunden":
+                    sendMsg(message, "Enter the name of Stunde: ");
+                    break;
                 case "/start":
                     sendMsg(message, "here are all possibilies: \n /Schueler to get all Schuelers \n /Lehrer - to get all Lehrer \n /Stunden - to get all Stunden");
             }
@@ -117,13 +126,22 @@ public class Bot extends TelegramLongPollingBot {
         replyKeyboardMarkup.setOneTimeKeyboard(false);
 
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
-        KeyboardRow keyboardRow = new KeyboardRow();
+        KeyboardRow keyboardRow1 = new KeyboardRow();
 
-        keyboardRow.add(new KeyboardButton("Schueler"));
-        keyboardRow.add(new KeyboardButton("Lehrer"));
-        keyboardRow.add(new KeyboardButton("Stunden"));
+        keyboardRow1.add(new KeyboardButton("Schueler"));
+        keyboardRow1.add(new KeyboardButton("Lehrer"));
+        keyboardRow1.add(new KeyboardButton("Stunden"));
 
-        keyboardRowList.add(keyboardRow);
+        keyboardRowList.add(keyboardRow1);
+        KeyboardRow keyboardRow2 = new KeyboardRow();
+
+        keyboardRow2.add(new KeyboardButton("\uD83D\uDD0E Schueler"));
+        keyboardRow2.add(new KeyboardButton("\uD83D\uDD0E Lehrer"));
+        keyboardRow2.add(new KeyboardButton("\uD83D\uDD0E Stunden"));
+
+        keyboardRowList.add(keyboardRow2);
+
+
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
     }
 
