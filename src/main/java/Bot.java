@@ -60,6 +60,8 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
+
+
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if(message != null && message.hasText()){
@@ -105,12 +107,15 @@ public class Bot extends TelegramLongPollingBot {
                     break;
                 case "\uD83D\uDD0E Schueler":
                     sendMsg(message, "Enter the name of Schueler: ");
+                    //after getting the answer of user, call the searching function and send the result
                     break;
                 case "\uD83D\uDD0E Lehrer":
                     sendMsg(message, "Enter the name of Lehrer: ");
+                    //after getting the answer of user, call the searching function and send the result
                     break;
                 case "\uD83D\uDD0E Stunden":
                     sendMsg(message, "Enter the name of Stunde: ");
+                    //after getting the answer of user, call the searching function and send the result
                     break;
                 case "/start":
                     sendMsg(message, "here are all possibilies: \n /Schueler to get all Schuelers \n /Lehrer - to get all Lehrer \n /Stunden - to get all Stunden");
