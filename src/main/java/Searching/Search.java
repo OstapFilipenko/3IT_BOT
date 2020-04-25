@@ -5,37 +5,36 @@ import Models.Schueler;
 import Models.Stunden;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
-
 public class Search {
 
-    public static List<Lehrer> searchLehrer(String attr, List<Lehrer> lehrerList){
+    public List<Lehrer> searchLehrer(String attr, List<Lehrer> lehrerList){
         List<Lehrer> lehrerOK = new ArrayList<>();
-        String regex = ".*" + attr + ".*";
+        String[] splited = attr.split(" ");
         for (Lehrer l: lehrerList) {
-            if(Pattern.matches(regex, l.toString())){
+            if(Arrays.stream(splited).parallel().anyMatch(l.toString()::contains)){
                 lehrerOK.add(l);
             }
         }
         return lehrerOK;
     }
 
-    public static List<Schueler> searchSchueler(String attr, List<Schueler> schuelerList){
+    public List<Schueler> searchSchueler(String attr, List<Schueler> schuelerList){
         List<Schueler> schuelerOK = new ArrayList<>();
-        String regex = ".*" + attr + ".*";
+        String[] splited = attr.split(" ");
         for (Schueler l: schuelerList) {
-            if(Pattern.matches(regex, l.toString())){
+            if(Arrays.stream(splited).parallel().anyMatch(l.toString()::contains)){
                 schuelerOK.add(l);
             }
         }
         return schuelerOK;
     }
-    public static List<Stunden> searchStunden(String attr, List<Stunden> stundenList){
+    public List<Stunden> searchStunden(String attr, List<Stunden> stundenList){
         List<Stunden> stundenOK = new ArrayList<>();
-        String regex = ".*" + attr + ".*";
+        String[] splited = attr.split(" ");
         for (Stunden l: stundenList) {
-            if(Pattern.matches(regex, l.toString())){
+            if(Arrays.stream(splited).parallel().anyMatch(l.toString()::contains)){
                 stundenOK.add(l);
             }
         }
