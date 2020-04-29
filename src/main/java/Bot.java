@@ -114,7 +114,7 @@ public class Bot extends TelegramLongPollingBot {
                     sendMsg(message, "here are all possibilies: \n /Schueler to get all Schuelers \n /Lehrer - to get all Lehrer \n /Stunden - to get all Stunden");
             }
         }
-        if(message.getReplyToMessage().getText().contains("Enter the name of Schueler:")){
+        if(message.isReply() && message.getReplyToMessage().getText().contains("Enter the name of Schueler:")){
             List<Schueler> foundSchueler = search.searchSchueler(message.getText(), schueler);
             String foundSchuelerStr = "Found Schueler: \n\n";
             for (Schueler s: foundSchueler) {
@@ -122,7 +122,7 @@ public class Bot extends TelegramLongPollingBot {
             }
             sendMsg(message, foundSchuelerStr);
         }
-        if(message.getReplyToMessage().getText().contains("Enter the name of Lehrer:")){
+        if(message.isReply() && message.getReplyToMessage().getText().contains("Enter the name of Lehrer:")){
             List<Lehrer> foundLehrer = search.searchLehrer(message.getText(), lehrer);
             String foundLehrerStr = "Found Lehrer: \n\n";
             for (Lehrer l: foundLehrer) {
@@ -130,7 +130,7 @@ public class Bot extends TelegramLongPollingBot {
             }
             sendMsg(message, foundLehrerStr);
         }
-        if(message.getReplyToMessage().getText().contains("Enter the name of Stunde:")){
+        if(message.isReply() && message.getReplyToMessage().getText().contains("Enter the name of Stunde:")){
             List<Stunden> foundStunden = search.searchStunden(message.getText(), stunden);
             String foundStundenStr = "Found Stunden: \n\n";
             for (Stunden s: foundStunden) {

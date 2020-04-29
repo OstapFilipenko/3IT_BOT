@@ -23,6 +23,7 @@ public class Overwriting_jsonFiles extends Thread{
         Request request = new Request.Builder()
                 .url(link)
                 .addHeader("Content-Type", "application/json")
+                .addHeader("X-Api-Key", "htl-leoben2020")
                 .build();
         try (Response response = httpClient.newCall(request).execute()) {
 
