@@ -1,7 +1,7 @@
 package gettingDatas;
 
 import Models.Lehrer;
-import Models.Schueler;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class allLehrer {
     public static List<Lehrer> getAllLehrer() throws IOException {
-        File file  = new File("C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Lehrer.json");
+        File file  = new File("C:\\HTL\\3-Klasse\\NTVS\\BOT\\JSON_Files\\Lehrer.json");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String result = "";
         String st;
@@ -22,6 +22,7 @@ public class allLehrer {
         while ((st = br.readLine()) != null){
             result += st;
         }
+
 
         JSONArray jsonArray = new JSONArray(result);
         jsonArray.forEach(jsonObject -> {

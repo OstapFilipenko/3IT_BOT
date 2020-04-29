@@ -14,7 +14,7 @@ import java.util.List;
 
 public class allSchueler {
     public static List<Schueler> getAllSchueler() throws IOException {
-        File file  = new File("C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Schueler.json");
+        File file  = new File("C:\\HTL\\3-Klasse\\NTVS\\BOT\\JSON_Files\\Schueler.json");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String result = "";
         String st;
@@ -22,6 +22,7 @@ public class allSchueler {
         while ((st = br.readLine()) != null){
             result += st;
         }
+
 
         JSONArray jsonArray = new JSONArray(result);
         jsonArray.forEach(jsonObject -> {

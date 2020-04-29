@@ -18,6 +18,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +29,15 @@ public class Bot extends TelegramLongPollingBot {
     List<Schueler> schueler = new ArrayList<>();
     List<Lehrer> lehrer = new ArrayList<>();
 
-    public static void main(String[] args){
-        Overwriting_jsonFiles students = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/students", "C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Schueler.json");
-        Overwriting_jsonFiles teachers = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/teachers", "C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Lehrer.json");
-        Overwriting_jsonFiles lessons = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/lessons", "C:\\HTL\\3-Klasse\\NTVS\\BOT\\NTVS_3IT_BOT\\src\\main\\resources\\Stunden.json");
+    static String lehrerJSON = "C:\\HTL\\3-Klasse\\NTVS\\BOT\\JSON_Files\\Lehrer.json";
+    static String schuelerJSON = "C:\\HTL\\3-Klasse\\NTVS\\BOT\\JSON_Files\\Schueler.json";
+    static String stundenJSON = "C:\\HTL\\3-Klasse\\NTVS\\BOT\\JSON_Files\\Stunden.json";
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Overwriting_jsonFiles students = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/students", schuelerJSON);
+        Overwriting_jsonFiles teachers = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/teachers", lehrerJSON);
+        Overwriting_jsonFiles lessons = new Overwriting_jsonFiles("https://damp-thicket-86137.herokuapp.com/lessons", stundenJSON);
 
         students.start();
         teachers.start();
